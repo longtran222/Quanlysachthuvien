@@ -4,42 +4,86 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 class sach {
-    String masach;
-    String tieude;
-    String tacgia;
-    int namxb;
-    int soluong;
+    private String masach;
+    private String tieude;
+    private String tacgia;
+    private int namxb;
+    private int soluong;
 
     public sach() {
     }
 
-    public sach(String ms, String td, String tg, int namxb, int sl) {
-        this.masach = ms;
-        this.tieude = td;
-        this.tacgia = tg;
-        this.namxb = namxb;
-        this.soluong = sl;
+    public sach(String masach, String tieude, String tacgia, int namxb, int soluong) {
+        this.masach = masach;
+        this.tieude = tieude;
+        this.tacgia = tacgia;
+        setnamxb(namxb);
+        setsoluong(soluong);
+    }
+
+    public String getmasach(){
+        return masach;
+    }
+    public void setmasach(String masach){
+        this.masach = masach;
+    }
+
+    public String gettieude(){
+        return tieude;
+    }
+    public void settieude(String tieude){
+        this.tieude = tieude;
+    }
+
+    public String gettacgia(){
+        return tacgia;
+    }
+    public void settacgia(String tacgia){
+        this.tacgia = tacgia;
+    }
+
+    public int getnamxb(){
+        return namxb;
+    }
+
+    public void setnamxb(int namxb){
+        if(namxb>0&&namxb<=2026)
+            this.namxb = namxb;
+        else{
+            System.out.println("Nam khong hop le");
+            this.namxb=2026;
+        }
+    }
+
+    public int getsoluong(){
+        return soluong;
+    }
+    public void setsoluong(int soluong){
+        if(soluong>=0)
+            this.soluong = soluong;
+        else
+            System.out.println("So luong khong hop le");
     }
 
     public void nhap(Scanner nhap) {
         System.out.print("Nhap ma sach: ");
-        masach = nhap.nextLine();
+        setmasach(nhap.nextLine());
         System.out.print("Nhap tieu de: ");
-        tieude = nhap.nextLine();
+        settieude(nhap.nextLine());
         System.out.print("Nhap tac gia: ");
-        tacgia = nhap.nextLine();
+        settacgia(nhap.nextLine());
         System.out.print("Nhap nam xuat ban: ");
-        namxb = Integer.parseInt(nhap.nextLine());
+        setnamxb(Integer.parseInt(nhap.nextLine()));
         System.out.print("Nhap so luong: ");
-        soluong = Integer.parseInt(nhap.nextLine());
+        setsoluong(Integer.parseInt(nhap.nextLine()));
     }
 
     public void hienthi() {
-        System.out.println("Ma sach: " +masach);
-        System.out.println("Tieu de: " +tieude);
-        System.out.println("Tac gia: " +tacgia);
-        System.out.println("Nam xuat ban: " +namxb);
-        System.out.println("So luong: " +soluong);
+        System.out.println("Ma sach: " +getmasach());
+        System.out.println("Tieu de: " +gettieude());
+        System.out.println("Tac gia: " +gettacgia());
+        System.out.println("Nam xuat ban: " +getnamxb());
+        System.out.println("So luong: " +getsoluong());
     }
 
     public static void nhapDanhSach(ArrayList<sach> danhsach, Scanner nhap) {
